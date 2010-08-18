@@ -124,14 +124,10 @@ public class AlphabetIndexer extends DataSetObserver implements SectionIndexer {
      * Default implementation compares the first character of word with letter.
      */
     protected int compare(String word, String letter) {
-        final String firstLetter;
         if (word.length() == 0) {
-            firstLetter = " ";
-        } else {
-            firstLetter = word.substring(0, 1);
-        }
-
-        return mCollator.compare(firstLetter, letter);
+            return mCollator.compare(" ", letter);
+        } 
+        return mCollator.compare(word.substring(0, 1), letter);
     }
 
     /**
